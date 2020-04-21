@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -25,6 +28,113 @@
               background-color: #dddddd;
             }
         </style>
+        <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  padding: 10px;
+  text-align: left;
+  background: #737CA1;
+  color: white;
+}
+/* Increase the font size of the h1 element */
+.header h1 {
+  font-size: 40px;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align:center;
+  padding: 15px 20px;
+  text-decoration: none;
+}
+
+.navbar b {
+  float: left;
+  display: block;
+  color: white;
+  background: black;
+  text-align: center;
+  padding: 15px 25px;
+  text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Change color on hover */
+.navbar b:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Column container */
+/* .row {  
+ /*  display: flex;
+ /*  flex-wrap: wrap;
+}
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Main column */
+.main {   
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Footer */
+/*.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+
+</style>
         <title>Association Maintenance</title>
     </head>
     <body>
@@ -48,7 +158,7 @@
         </div>
         <div>
             <span class="navbar-text" style="padding:5px">
-                <?php echo $_SESSION['ID_Number']; ?>
+                <?php echo $_SESSION["ID_Number"]; ?>
             </span>
         </div>
         <div align="right">
@@ -62,5 +172,43 @@
             <h1>Welcome!</h1>
             <h3>to ROCS.sa JobSearch's Applicant Home Page</h3>
         </div>    
+        <p>A website created by Benjamin Alterman, Tyler Gallegos, Pravina Pidikiti, Emilia Garcia-Saravia, Chase Laprime.</p>
+</div>
+
+
+<div class="row">
+  <div class="side">
+    <a href="/homepage/homepage.html">Explore Jobs</a>
+    <h5>Jobs Recommended for you:</h5>
+    <div class="fakeimg" style="height:200px;">Image</div>
+    <p>Based on your interests and profile</p>
+    <a href ="/homepage/homepage.html">Jobs You Favorited</a>
+    <div class="fakeimg" style="height:60px;">Image</div><br>
+    <div class="fakeimg" style="height:60px;">Image</div><br>
+    <div class="fakeimg" style="height:60px;">Image</div>
+     <li class="active"><a href="#">See more jobs</a></li>
+  </div>
+<div class="row">
+  <div class="side">
+    <h2>Explore Companies</h2>
+    <h5>Companies Recommended for you:</h5>
+    <div class="fakeimg" style="height:200px;">Image</div>
+    <p>Based on your interests and profile</p>
+    <li><a href="#">See more companies</a></li>
+  </div>
+
+  <div class="row">
+  <div class="side">
+    <h2>Explore Careers</h2>
+    <h5>Careers Recommended for you:</h5>
+    <div class="fakeimg" style="height:200px;">Image</div>
+    <p>Based on your interests and profile</p>
+    <li><a href="#">See more careers</a></li>
+  </div>
+
+
+  
+</div>
+
     </body>
 </html>

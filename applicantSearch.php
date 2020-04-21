@@ -2,7 +2,7 @@
     if(isset($_POST['name'])){
         $name = $_POST["name"];
     }
-    $_SESSION['ID_Number'] = "tyler";
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -46,9 +46,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="/employerWelcome.php">Home </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/reporting.php">Reporting</a>
-            </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/applicantSearch.php">Applicant Search<span class="sr-only">(current)</span></a>
             </li>
@@ -61,8 +58,6 @@
                 <a class="dropdown-item" href="/companyManagement.php">Manage Companies</a>
                 <a class="dropdown-item" href="/employeeManagement.php">Manage Employees</a>
                 <a class="dropdown-item" href="/jobManagement.php">Manage Jobs</a>
-                <a class="dropdown-item" href="/applicationManagement.php">Manage Applicants</a>
-                <a class="dropdown-item" href="/committeeManagement.php">Manage Committees</a>
                 </div>
             </li>
             </ul>

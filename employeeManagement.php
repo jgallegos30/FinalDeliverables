@@ -26,7 +26,7 @@
               background-color: #dddddd;
             }
         </style>
-        <title>Job Maintenance</title>
+        <title>Company Maintenance</title>
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -49,8 +49,8 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="/associationManagement.php">Manage Associations</a>
                 <a class="dropdown-item" href="/companyManagement.php">Manage Companies</a>
-                <a class="dropdown-item" href="/employeeManagement.php">Manage Employees</a>
-                <a class="dropdown-item active" href="/jobManagement.php">Manage Jobs<span class="sr-only">(current)</span></a>
+                <a class="dropdown-item active" href="/employeeManagement.php">Manage Employees<span class="sr-only">(current)</span></a>
+                <a class="dropdown-item" href="/jobManagement.php">Manage Jobs</a>
                 </div>
             </li>
             </ul>
@@ -67,15 +67,15 @@
         </div>
     </nav>
 
-        <h1 style="margin-left:1%">Job Management</h1>
+        <h1 style="margin-left:1%">Employee Management</h1>
 		<div class="card text-center">
 			<div class="card-header">
 				<ul class="nav nav-tabs card-header-tabs">
 					<li class="nav-item">
-                        <a class="nav-link active" href="/jobManagement.php">Manage Jobs</a>
+                        <a class="nav-link active" href="/employeeManagement.php">Manage Employees</a>
 					</li>
 					<li class="nav-item">
-                        <a class="nav-link" href="/createJob.php">Create New Job</a>
+                        <a class="nav-link" href="/createEmployee.php">Create New Employee</a>
 					</li>
 				</ul>
 			</div>
@@ -83,16 +83,16 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Description</th>
-                            <th>Closing Date</th>
-                            <th>Status</th>
-                            <th>Company</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Resume</th>
+                            <th>Current Company</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                            print("<h4>Jobs</h4>");
+                            print("<h4>Employees</h4>");
                             require_once 'connect.php';
                             if (isset($_GET['page_no']) && $_GET['page_no']!="") {
                                 $page_no = $_GET['page_no'];
@@ -106,22 +106,21 @@
                             $next_page = $page_no + 1;
                             $adjacents = "4"; 
 
-                            $result_count = mysqli_query($link,"SELECT COUNT(*) As total_records FROM `Job Opening`");
+                            $result_count = mysqli_query($link,"SELECT COUNT(*) As total_records FROM `Employee`");
                             $total_records = mysqli_fetch_array($result_count);
                             $total_records = $total_records['total_records'];
                             $total_no_of_pages = ceil($total_records / $total_records_per_page);
                             $second_last = $total_no_of_pages - 1; // total page minus 1
                             
-                            $result = mysqli_query($link,"SELECT `Job Opening`.opening_id, `Job Opening`.description, `Job Opening`.date, `Job Opening`.status, Company.company_name FROM `Job Opening` INNER JOIN Company ON `Job Opening`.comp_id=Company.company_id LIMIT $offset, $total_records_per_page");
+                            $result = mysqli_query($link,"SELECT Employee.employee_id, Employee.emp_name, Employee.emp_last_name, Employee.emp_email, Employee.emp_resume, Company.company_name FROM Employee INNER JOIN Company ON Employee.comp_id=Company.company_id LIMIT $offset, $total_records_per_page");
                             while($row = mysqli_fetch_array($result)){
-
-                                    echo "<tr>
-                                        <td>".$row['description']."</td>
-                                        <td>".$row['date']."</td>
-                                        <td>".$row['status']."</td>
+                                echo "<tr>
+                                        <td>".$row['emp_name']." ".$row['emp_last_name']."</td>
+                                        <td>".$row['emp_email']."</td>
+                                        <td>".$row['emp_resume']."</td>
                                         <td>".$row['company_name']."</td>
-                                        <td><a href='/applyJob.php?id=".$row['opening_id'] . "'>" . "DELETE</a></td>
-                                      </tr>";   
+                                        <td><a href='/deleteEmployee.php?id=".$row['employee_id'] . "'>" . "DELETE</a></td>
+                                      </tr>";
                             }
                             ?>
                     </tbody>

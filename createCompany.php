@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -40,9 +40,6 @@
                 <a class="nav-link" href="/employerWelcome.php">Home </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/reporting">Reporting</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/applicantSearch.php">Applicant Search</a>
             </li>
             <li class="nav-item dropdown">
@@ -54,8 +51,6 @@
                 <a class="dropdown-item active" href="/companyManagement.php">Manage Companies<span class="sr-only">(current)</span></a>
                 <a class="dropdown-item" href="/employeeManagement.php">Manage Employees</a>
                 <a class="dropdown-item" href="/jobManagement.php">Manage Jobs</a>
-                <a class="dropdown-item" href="/applicationManagement.php">Manage Applicants</a>
-                <a class="dropdown-item" href="/committeeManagement.php">Manage Committees</a>
                 </div>
             </li>
             </ul>

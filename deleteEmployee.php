@@ -5,12 +5,12 @@
     
     $id = $_GET['id'];
     
-    $sql = "DELETE FROM `Job Opening` WHERE opening_id='";
+    $sql = "DELETE FROM Employee WHERE employee_id='";
     $sql .= $id . "'";
     
     if(mysqli_query($link, $sql)){
         print("Successfully deleted");
-        echo "<script>location.href='jobManagement.php'</script>";
+        echo "<script>location.href='employeeManagement.php'</script>";
     }
     else{
         print("Failed");
